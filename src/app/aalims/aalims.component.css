@@ -1,0 +1,21 @@
+.location li {
+  display: inline;
+  text-align: left;
+  margin-right: 10px;
+}
+.location li .fa {
+  color: #ffc107;
+}
+.card-text {
+  margin-top: 12px;
+}
+.card {
+  margin-bottom: 30px !important;
+}
+
+.location {
+  text-align: left;
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-bottom: 0px;
+}

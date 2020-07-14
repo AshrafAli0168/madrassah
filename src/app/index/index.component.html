@@ -1,0 +1,180 @@
+<section class="top-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 text-white">
+        <h4>
+          <span class="badge badge-success">We belive in</span>
+        </h4>
+        <h1 class="text-white">
+          Allah and His Prophet PBUH
+        </h1>
+        <p class="mb-3">
+          Lorem ipsum is dummy text serving print media industry from years. We
+          deal with best car rental system in nation wide. Our system is not
+          only fast but also has many benefits in your supper journey. Hire us
+          today!
+        </p>
+      </div>
+    </div>
+    <form class="mt-4" #f="ngForm" (ngSubmit)="route(f)">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="model" class="text-white">Choose your location</label>
+            <select
+              class="form-control"
+              ngModel
+              #modelsss="ngModel"
+              name="city"
+              id="model"
+            >
+              <option value="" selected>Select one</option>
+              <option
+                *ngFor="let car of uniqueCityList$ | async"
+                [value]="car"
+                >{{ car }}</option
+              >
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-12">
+          <button
+            type="submit"
+            class="btn btn-success btn-block mb-3"
+            [disabled]="!f.valid"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section id="intro">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h4><span class="badge badge-success">Empowering</span></h4>
+        <h1 class="display-4">
+          Islamic Education
+        </h1>
+        <h3 class="text-muted">Get an Aalim Online</h3>
+        <div class="custom-hr"></div>
+        <p class="big">
+          Lorem ipsum is dummy text serving print media industry from years. We
+          deal with best car rental system in nation wide. Our system is not
+          only fast but also has many benefits in your supper journey. Hire us
+          today! Lorem ipsum is dummy text serving print media industry from
+          years. We deal with best car rental system in nation wide.
+        </p>
+
+        <a class="btn btn-primary mt-4" href="#" role="button">View Aalims!</a>
+      </div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-5">
+        <img src="./assets/img/icon-top.png" alt="" srcset="" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fleet">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <h2 class="display-5 mx-auto font-weight-bold">
+          See your Favourite Madrassa
+        </h2>
+        <div class="custom-hr mx-auto pt-3"></div>
+        <div class="custom-width-block">
+          Lorem Ipsum Data We deal with best car rental system in nation wide.
+          Our system is not only fast but also has many benefits in your supper
+          journey.
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="filter-row text-center">
+          <ul class="list-group list-group-horizontal-md">
+            <li
+              class="list-group-item"
+              [ngClass]="{ active: 'all' === selectedModel }"
+              (click)="filter({ model: 'all' })"
+            >
+              All
+            </li>
+            <li
+              *ngFor="let model of models"
+              class="list-group-item"
+              [ngClass]="{ active: model === selectedModel }"
+              (click)="filter({ city: model })"
+            >
+              {{ model }}
+            </li>
+          </ul>
+        </div>
+        <div class="row">
+          <ng-container *ngIf="!loading; else showSkeleton">
+            <ng-container
+              *ngFor="let madrasa of this.madrasas | slice: 0:9; let i = index"
+            >
+              <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card" style="width: 350px !important;">
+                  <img
+                    [routerLink]="['/madrasa', madrasa.id]"
+                    class="card-img-top filter-card-img"
+                    [src]="madrasa.img"
+                  />
+                  <div class="card-body">
+                    <h4 class="card-title text-primary">
+                      {{ madrasa.name }}
+                    </h4>
+
+                    <p class="card-text">
+                      {{ madrasa.description | slice: 0:130 }}...
+                    </p>
+                    <button
+                      type="button"
+                      [routerLink]="['/madrasa', madrasa.id]"
+                      class="btn btn-success btn-sm btn-block"
+                    >
+                      View Aalims
+                    </button>
+                  </div>
+                  <div class="card-footer">
+                    <ul class="location">
+                      <li>
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        {{ madrasa.headName }}
+                      </li>
+                      <li>
+                        <i class="fa fa-map-o" aria-hidden="true"></i>
+                        {{ madrasa.city }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+            </ng-container>
+          </ng-container>
+          <ng-template #showSkeleton>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <nz-skeleton [nzActive]="true"></nz-skeleton>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <nz-skeleton [nzActive]="true"></nz-skeleton>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <nz-skeleton [nzActive]="true"></nz-skeleton>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

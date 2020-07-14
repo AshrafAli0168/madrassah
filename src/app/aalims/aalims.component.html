@@ -1,0 +1,192 @@
+<section
+  id="breadcrumb"
+  class="bg-primary text-white"
+  style="padding: 100px 100px 100px 100px;"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-white">Aalims</h1>
+        <p class="lead text-white">
+          Here you can find your favrouite Aalim!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="cars">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 p-5">
+        <div class="row border-bottom mb-3 pb-2">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <span> <h4>Results</h4> </span
+            ><span>
+              We brought you
+              <strong *ngIf="aalims | async as aalims">
+                {{ aalims?.length }}</strong
+              >
+              Aalims(s).</span
+            >
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-12">
+            <form>
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sort">City</label>
+                    <select
+                      class="custom-select"
+                      name="city"
+                      [(ngModel)]="city"
+                      id="sort"
+                      (ngModelChange)="cityFilter()"
+                    >
+                      <option value="">Select City</option>
+                      <option *ngFor="let city of cities" [value]="city">{{
+                        city
+                      }}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="show">Show</label>
+                    <select
+                      class="custom-select"
+                      [(ngModel)]="noOfMadrasas"
+                      (ngModelChange)="limit()"
+                      name="show"
+                      id="show"
+                    >
+                      <option value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <ng-container
+            *ngFor="let aalim of this.aalims | async; let i = index"
+          >
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="card" style="width: 350px !important;">
+                <img class="card-img-top filter-card-img" [src]="aalim.img" />
+                <div class="card-body">
+                  <div class="card-title text-primary">
+                    <span
+                      ><h4 style="display: inherit;">{{ aalim.name }}</h4></span
+                    >
+
+                    <span class="float-right text-muted">
+                      <span>Aalim at: </span>
+                      <span *ngIf="aalim.madrasa | async as madrasa">{{
+                        madrasa.name
+                      }}</span></span
+                    >
+                  </div>
+
+                  <p class="card-text">
+                    {{ aalim.bio }}
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm btn-block"
+                    (click)="openCall(aalim)"
+                  >
+                    Send a message
+                  </button>
+                </div>
+                <div class="card-footer">
+                  <ul class="location">
+                    <li>
+                      <i class="fa fa-phone" aria-hidden="true"></i>
+                      {{ aalim.phone }}
+                    </li>
+                    <li>
+                      <i class="fa fa-map-o" aria-hidden="true"></i>
+                      {{ aalim.location }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzWrapClassName="vertical-center-modal"
+  [nzTitle]="'Cotact Aalim'"
+  [nzContent]="modalContent"
+  [nzFooter]="null"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalContent>
+    <form ngForm #callForm="ngForm" (ngSubmit)="handleOk(callForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          ngModel
+          required
+          id="name"
+          aria-describedby="name"
+          placeholder=""
+        />
+        <small id="name" class="form-text text-muted">Your gentle name?</small>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          class="form-control"
+          ngModel
+          required
+          name="phone"
+          id="phone"
+          aria-describedby="phone"
+          placeholder=""
+        />
+        <small id="phone" class="form-text text-muted"
+          >Your phone number.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea
+          class="form-control"
+          name="message"
+          ngModel
+          required
+          id="message"
+          rows="3"
+        ></textarea>
+      </div>
+      <div
+        *ngIf="(callForm.touched || callForm.dirty) && callForm.invalid"
+        class="alert alert-danger"
+        role="alert"
+      >
+        <strong>Please fill all field correctly.</strong>
+      </div>
+      <button
+        type="button"
+        class="btn btn-success btn-lg btn-block"
+        (click)="handleOk(callForm)"
+      >
+        Submit
+      </button>
+    </form>
+  </ng-template></nz-modal
+>

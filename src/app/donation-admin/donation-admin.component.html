@@ -1,0 +1,16 @@
+<nz-table #basicTable [nzData]="donations" [nzLoading]="loading">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data?.name }}</td>
+      <td>{{ data?.phone }}</td>
+      <td>{{ data?.amount }}</td>
+    </tr>
+  </tbody>
+</nz-table>

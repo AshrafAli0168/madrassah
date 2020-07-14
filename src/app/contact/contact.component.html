@@ -1,0 +1,238 @@
+<section
+  id="contact"
+  style="
+    background: url('./assets/img/about.jpg');
+    background-position: center;
+    object-fit: cover;
+    background-size: cover;
+  "
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div
+          class="content-container"
+          style="padding-top: 150px; padding-bottom: 150px;"
+        >
+          <h1 class="text-white">Contact Us</h1>
+          <h5 class="text-white">We are available 24/7. Contact us anytime.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="contact-info">
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-sm-12">
+        <h4><span class="badge badge-success">Our Mission</span></h4>
+
+        <h2>
+          We deal with quality, hands-on experience.
+        </h2>
+        <p class="text-muted pt-4 pr-5 mb-5 lead">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat!
+        </p>
+        <button type="button" class="btn btn-success" (click)="openCall()">
+          <i class="fa fa-phone mr-1" aria-hidden="true"></i> Request Call Back
+        </button>
+        <div class="mb-5"></div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-sm-12">
+        <div class="map-content-wrapper">
+          <div class="map-content-inner">
+            <div class="logo-map">
+              <img src="/assets/img/logo.png" style="width: 300px;" alt="" />
+            </div>
+            <span class="eyebrow mb-0">Address:</span>
+            <p class="text-primary mb-4 fw-medium">
+              New Khan Plaza, City Town, Multan, Pakistan
+            </p>
+            <span class="eyebrow mb-0">Phone Number:</span>
+            <p class="text-primary mb-4 fw-medium">030X-XXX-XXXX</p>
+            <span class="eyebrow mb-0">Working Hours:</span>
+            <p class="text-primary mb-4 fw-medium">
+              Mon - Sat: 8:00am - 6:00pm
+            </p>
+          </div>
+          <div class="map-content-bg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="form">
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-lg-3"></div>
+      <div class="col-md-6 col-lg-6 col-sm-12">
+        <div class="container">
+          <form class="pb-5" ngForm #f="ngForm" (ngSubmit)="handleContact(f)">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="name">First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    ngModel
+                    id="name"
+                    class="form-control"
+                    required
+                    style="
+                      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==');
+                      background-repeat: no-repeat;
+                      background-attachment: scroll;
+                      background-size: 16px 18px;
+                      background-position: 98% 50%;
+                    "
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="name">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    required
+                    ngModel
+                    id="name"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    ngModel
+                    id="email"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input
+                    type="tel"
+                    required
+                    name="phone"
+                    ngModel
+                    id="phone"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input
+                    type="text"
+                    required
+                    name="subject"
+                    ngModel
+                    id="subject"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="textaread">Message</label>
+                  <textarea
+                    class="form-control"
+                    name="message"
+                    required
+                    ngModel
+                    id="textaread"
+                    rows="5"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+  </div>
+</section>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzWrapClassName="vertical-center-modal"
+  [nzTitle]="'Call Back Request'"
+  [nzContent]="modalContent"
+  [nzFooter]="null"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalContent>
+    <form ngForm #callForm="ngForm" (ngSubmit)="handleOk(callForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          ngModel
+          required
+          id="name"
+          aria-describedby="name"
+          placeholder=""
+        />
+        <small id="name" class="form-text text-muted">Your gentle name?</small>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          class="form-control"
+          ngModel
+          required
+          name="phone"
+          id="phone"
+          aria-describedby="phone"
+          placeholder=""
+        />
+        <small id="phone" class="form-text text-muted"
+          >Your phone number.</small
+        >
+      </div>
+      <div
+        *ngIf="(callForm.touched || callForm.dirty) && callForm.invalid"
+        class="alert alert-danger"
+        role="alert"
+      >
+        <strong>Please fill all field correctly.</strong>
+      </div>
+      <button
+        type="button"
+        class="btn btn-success btn-lg btn-block"
+        (click)="handleOk(callForm)"
+      >
+        Submit
+      </button>
+    </form>
+  </ng-template></nz-modal
+>

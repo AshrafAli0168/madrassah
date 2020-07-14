@@ -1,0 +1,29 @@
+.header-actions {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  vertical-align: bottom;
+  border-bottom: 2px solid transparent;
+  margin-top: -1px;
+  margin-bottom: 16px;
+}
+
+.header-actions {
+  margin-left: 20px;
+}
+
+@media (max-width: 800px) {
+  .ant-menu-horizontal {
+    white-space: initial;
+  }
+
+  .ant-menu-horizontal > .ant-menu-item,
+  .ant-menu-horizontal > .ant-menu-submenu {
+    float: left !important;
+  }
+
+  .header-actions {
+    margin-left: 9% !important;
+    float: left !important;
+  }
+}

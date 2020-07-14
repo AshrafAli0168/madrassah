@@ -1,0 +1,29 @@
+<nz-table #basicTable [nzData]="apps">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Madrasah</th>
+      <th>Head Name</th>
+      <th>City</th>
+      <th>Phone</th>
+      <th>Bio</th>
+      <th>Status</th>
+      <th *ngIf="this.user?.userType == 'head'">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data?.name }}</td>
+      <td *ngIf="data?.madrasah | async as mad1">{{ mad1.name }}</td>
+      <td *ngIf="data?.madrasah | async as mad2">{{ mad2.headName }}</td>
+
+      <td>{{ data?.location }}</td>
+      <td>{{ data?.phone }}</td>
+      <td>{{ data?.bio }}</td>
+      <td>{{ data?.activationStatus | uppercase }}</td>
+
+      <td *ngIf="this.user?.userType == 'head'"> <a (click)="approve(data)">Approve</a> </td>
+
+    </tr>
+  </tbody>
+</nz-table>

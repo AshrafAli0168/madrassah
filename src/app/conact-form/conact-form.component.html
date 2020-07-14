@@ -1,0 +1,20 @@
+<nz-table #basicTable [nzData]="dataSet">
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>
+        <a (click)="navigateToDetails(data)">{{ data.subject }}</a>
+      </td>
+      <td>{{ data.firstName }} {{ data.lastName }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data?.date | date: "short" }}</td>
+    </tr>
+  </tbody>
+</nz-table>

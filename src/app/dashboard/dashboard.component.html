@@ -1,0 +1,79 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <nz-layout class="layout">
+        <nz-sider nzCollapsible nzBreakpoint="lg" nzTheme="light" [nzCollapsedWidth]="0">
+          <ul nz-menu nzTheme="light" nzMode="inline">
+            <li *ngIf="user?.isAdmin || user?.userType == 'head' || user?.userType != 'student'" nz-submenu
+              nzIcon="group" nzTitle="Madaris">
+              <ul>
+                <li nzMatchRouter routerLink="/dashboard/orders" nz-menu-item>
+                  Madaris
+                </li>
+                <li routerLink="/fleet" nz-menu-item>Add new</li>
+              </ul>
+            </li>
+            <li *ngIf="user?.userType == 'head'" nz-menu-item nzMatchRouter routerLink="/dashboard/applications">
+              <i nz-icon nzType="user"></i>
+              <span>Applications</span>
+            </li>
+            <li *ngIf="user?.userType == 'head' || user?.isAdmin" nz-menu-item nzMatchRouter
+              routerLink="/dashboard/donation">
+              <i nz-icon nzType="dollar"></i>
+              <span>Donations</span>
+            </li>
+            <li *ngIf="user?.userType == 'head'" nz-menu-item nzMatchRouter routerLink="/dashboard/aalimscontacts">
+              <i nz-icon nzType="phone"></i>
+              <span>Aalims Contacts</span>
+            </li>
+            <li *ngIf="user?.userType == 'head'" nz-menu-item nzMatchRouter routerLink="/dashboard/newaalim">
+              <i nz-icon nzType="user-add"></i>
+              <span>Add Aalim</span>
+            </li>
+            <li *ngIf="user?.isAdmin" nz-submenu nzIcon="phone" nzTitle="Contacts">
+              <ul>
+                <li nzMatchRouter routerLink="/dashboard/contacts" nz-menu-item>
+                  Contacts
+                </li>
+                <li nzMatchRouter routerLink="/dashboard/requests" nz-menu-item>
+                  Call Requests
+                </li>
+              </ul>
+            </li>
+            <li *ngIf="user?.userType == 'student'" nz-menu-item nzMatchRouter routerLink="/dashboard/student">
+              <i nz-icon nzType="user"></i>
+              <span>Student Panel</span>
+            </li>
+            <li *ngIf="user?.userType == 'student'  && user?.isAdmin !=true" nz-menu-item nzMatchRouter
+              routerLink="/dashboard/apply-for-aalim">
+              <i nz-icon nzType="file-add"></i>
+              <span>Apply for Aalim</span>
+            </li>
+
+            <li *ngIf="user?.userType == 'student' || 'head' && user?.isAdmin !=true" nz-menu-item nzMatchRouter
+              routerLink="/dashboard/aalim-apps">
+              <i nz-icon nzType="file-text"></i>
+              <span>Aalim Applications</span>
+            </li>
+            <li nz-menu-item nzMatchRouter routerLink="/dashboard/setting">
+              <i nz-icon nzType="setting"></i>
+              <span>Settings</span>
+            </li>
+
+            <li nz-menu-item (click)="logout()">
+              <i nz-icon nzType="logout" nzTheme="outline"></i>
+              <span>Logout</span>
+            </li>
+          </ul>
+        </nz-sider>
+        <nz-layout>
+          <nz-content>
+            <div class="inner-content">
+              <router-outlet></router-outlet>
+            </div>
+          </nz-content>
+        </nz-layout>
+      </nz-layout>
+    </div>
+  </div>
+</div>

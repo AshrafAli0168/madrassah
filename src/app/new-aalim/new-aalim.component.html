@@ -1,0 +1,33 @@
+<nz-spin [nzSpinning]="spin">
+
+  <form ngForm #f="ngForm" (ngSubmit)="submit(f)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" id="name" ngModel required />
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" name="location" id="location" ngModel required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" class="form-control" name="phone" id="phone" ngModel required />
+    </div>
+    <div class="form-group">
+      <label for="madrasaId">Madrasa</label>
+      <select class="form-control" name="madrasaId" id="madrasaId" ngModel required>
+        <option *ngFor="let item of madaris" [value]="item.id">{{
+        item.name
+      }}</option>
+      </select>
+    </div>
+    <label for="img">Profile</label>
+    <input type="file" name="img" id="img" (change)="onSelectFile($event)" />
+    <div class="form-group">
+      <label for="bio">Bio</label>
+      <textarea class="form-control" name="bio" id="bio" rows="3" ngModel required></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Submit" />
+  </form>
+
+</nz-spin>

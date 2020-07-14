@@ -1,0 +1,16 @@
+<nz-table #basicTable [nzData]="dataSet" [nzLoading]="loading">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Request Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data?.date | date: "short" }}</td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,69 @@
+<div class="container pt-5 pb-5">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <h1>Support Deserving Students</h1>
+      <form ngForm #f="ngForm" (ngSubmit)="submit(f)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            ngModel
+            type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            ngModel
+            type="text"
+            class="form-control"
+            name="phone"
+            id="phone"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="madrasa">Madrasa</label>
+          <select
+            ngModel
+            class="form-control"
+            name="madrasa"
+            id="madrasa"
+            required
+          >
+            <option *ngFor="let item of this.madaris" [value]="item.id">{{
+              item.name
+            }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input
+            ngModel
+            type="text"
+            class="form-control"
+            name="amount"
+            id="amount"
+            aria-describedby="helpId"
+            placeholder=""
+          />
+          <small id="helpId" class="form-text text-muted"
+            >Please specify the amount you want to donate.</small
+          >
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success" />
+      </form>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-12"></div>
+    <div class="col-lg-5 col-md-5 col-sm-12">
+      <img
+        src="/assets/img/donation.jpg"
+        class="image-fluid"
+        style="width: 400px;"
+      />
+    </div>
+  </div>
+</div>

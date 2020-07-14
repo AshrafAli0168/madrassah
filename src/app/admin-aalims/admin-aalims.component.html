@@ -1,0 +1,19 @@
+<ng-container *ngFor="let item of this.aalims">
+  <h4>Aalim name: {{ item.name }}</h4>
+  <div *ngIf="item?.contacts">
+    <ng-container *ngFor="let contact of item?.contacts">
+      <nz-comment
+        [nzAuthor]="contact?.name"
+        nzDatetime="{{ contact.date | date: 'short' }}"
+      >
+        <nz-avatar nz-comment-avatar nzIcon="user" nzSrc="null"></nz-avatar>
+        <nz-comment-content>
+          <p>
+            {{ contact.message }}
+          </p>
+        </nz-comment-content>
+      </nz-comment>
+    </ng-container>
+  </div>
+  <nz-divider></nz-divider>
+</ng-container>

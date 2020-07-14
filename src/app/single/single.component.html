@@ -1,0 +1,108 @@
+<div class="container mt-4">
+  <div class="row">
+    <ng-container *ngIf="madrasa">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="car-info">
+          <h1 nz-typography>
+            {{ madrasa.name }}
+            <span class="text-muted">Head: {{ madrasa.headName }}</span>
+          </h1>
+          <img [src]="madrasa.img" style="width: 100%;" />
+          <div style="margin-top: 20px; margin-bottom: 30px;">
+            <nz-tabset>
+              <nz-tab nzTitle="Description"> {{ madrasa.description }} </nz-tab>
+              <nz-tab nzTitle="Aalims">
+                <nz-list *ngIf="this.aalims" class="demo-loadmore-list">
+                  <nz-list-item *ngFor="let item of aalims">
+                    <nz-list-item-meta [nzAvatar]="item.img" [nzDescription]="item.bio">
+                      <nz-list-item-meta-title>
+                        {{ item.name }}
+                      </nz-list-item-meta-title>
+                    </nz-list-item-meta>
+
+                    <ul nz-list-item-actions>
+                      <nz-list-item-action><a (click)="openCall(item)">Send Message</a></nz-list-item-action>
+                    </ul>
+                  </nz-list-item>
+                </nz-list>
+              </nz-tab>
+              <nz-tab *ngIf="madrasa.address" nzTitle='Location'>
+                <h3>{{ madrasa.address.address }}</h3>
+                <agm-map [latitude]="madrasa.address.latitude" [longitude]="madrasa.address.longitude" [zoom]="15">
+                </agm-map>
+              </nz-tab>
+            </nz-tabset>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="widget rentify-rent-price-list">
+          <span class="rent-price-title">Student Application</span>
+          <nz-spin [nzSpinning]="spin">
+            <form ngForm #f="ngForm" (ngSubmit)="submitApplication(f)">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" ngModel class="form-control" ngModel />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" ngModel class="form-control" name="email" id="email" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" name="phone" id="phone" ngModel />
+                <small id="phone" class="form-text text-muted">Help text</small>
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" class="form-control" ngModel />
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" id="city" ngModel />
+              </div>
+              <div class="form-group">
+                <label for="bio">Bio</label>
+                <input type="text" class="form-control" name="bio" id="bio" ngModel />
+              </div>
+              <input type="submit" [disabled]="!this.user" class="btn btn-success" value="Submit" />
+              <p class="text-danger" *ngIf="!this.user">
+                Please login to submit application.
+              </p>
+            </form>
+          </nz-spin>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzWrapClassName="vertical-center-modal" [nzTitle]="'Cotact Aalim'"
+  [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="handleCancel()">
+  <ng-template #modalContent>
+    <form ngForm #callForm="ngForm" (ngSubmit)="handleOk(callForm)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" ngModel required id="name" aria-describedby="name"
+          placeholder="" />
+        <small id="name" class="form-text text-muted">Your gentle name?</small>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" class="form-control" ngModel required name="phone" id="phone" aria-describedby="phone"
+          placeholder="" />
+        <small id="phone" class="form-text text-muted">Your phone number.</small>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" name="message" ngModel required id="message" rows="3"></textarea>
+      </div>
+      <div *ngIf="(callForm.touched || callForm.dirty) && callForm.invalid" class="alert alert-danger" role="alert">
+        <strong>Please fill all field correctly.</strong>
+      </div>
+      <button type="button" class="btn btn-success btn-lg btn-block" (click)="handleOk(callForm)">
+        Submit
+      </button>
+    </form>
+  </ng-template>
+</nz-modal>

@@ -1,0 +1,15 @@
+<ng-container *ngIf="data[0].activationStatus != 'pending'; else no">
+  <nz-result nzStatus="success" nzTitle="Application Approved!"
+    nzSubTitle="Welcome to our Madrasah. Your application is approved. ">
+
+  </nz-result>
+</ng-container>
+
+
+
+<ng-template #no>
+  <nz-result nzStatus="500" nzTitle="Application Pending"
+    nzSubTitle="Sorry, your application is still under review by administrator!">
+
+  </nz-result>
+</ng-template>
