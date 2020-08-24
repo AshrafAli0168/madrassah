@@ -113,13 +113,11 @@ export class MadrasaService {
       .snapshotChanges()
       .pipe(
         map((items) => {
-          items.map((a) => {
+          return items.map((a) => {
             const data: any = a.payload.val();
             data.id = a.payload.key;
             return { ...data };
           });
-
-          return items;
         })
       );
   }

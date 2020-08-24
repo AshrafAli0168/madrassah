@@ -41,6 +41,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
           .subscribe(
             (data) => {
               this.dataSet = data;
+              console.log(data);
               this.loading = false;
             },
             (err) => {
@@ -53,6 +54,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
           .subscribe(
             (data) => {
               this.dataSet = data;
+              console.log(data);
+
               this.loading = false;
             },
             (err) => {
